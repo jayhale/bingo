@@ -1,0 +1,68 @@
+@import 'primer-css/index.scss';
+
+/* Page layout ============================================================ */
+.container {
+  width: auto;
+  max-width: $container-width;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+header, footer {
+  display: block;
+}
+
+/* Header ================================================================= */
+header {
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  margin-bottom: 1.5rem;
+  background-color: $bg-gray-dark;
+  width: 100%;
+
+  .container {
+    .logo {
+      display: inline-block;
+      font-size: 1.5em;
+      color: $white;
+      @media (min-width: $width-md) {
+        float: left;
+      }
+    }
+
+    nav {
+      font-size: 1em;
+      margin-top: 1em;
+      @media (min-width: $width-md) {
+        float: right;
+        margin-top: 0.5em;
+      }
+
+      a {
+        color: $white
+      }
+
+      a:not(:last-child) {
+        margin-right: 1.25em;
+      }
+    }
+  }
+}
+
+/* Footer ================================================================= */
+footer {
+  padding-top: 1rem;
+  padding-bottom: 1.25rem;
+  margin-top: 2rem;
+  width: 100%;
+  border-top: 1px solid $border-black-fade;
+
+  .container {
+    text-align: center;
+    color: $text-gray;
+
+    a {
+      color: $text-gray-dark;
+    }
+  }
+}

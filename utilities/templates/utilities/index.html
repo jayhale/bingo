@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>Who are you?</h1>
+<p class="lead">Find your name in the list below to see your bingo cards</p>
+<div class="columns">
+  <div class="one-fifth">
+    <nav class="menu">
+      <span class="menu-heading">Player</span>
+      {% for user in users %}
+      <a href="{% url 'cards' user.pk %}" class="menu-item">{{ user.get_full_name }}</a>
+      {% endfor %}
+    </nav>
+  </div>
+</div>
+{% endblock %}

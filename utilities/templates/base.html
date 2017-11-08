@@ -1,0 +1,41 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>{% block title %}Bingo{% endblock %}</title>
+    <link rel="stylesheet" type="text/css" media="all" href="{% static 'css/index.css' %}">
+    {% block extraheaders %}{% endblock %}
+  </head>
+  <body>
+    <header>
+      <div class="container">
+        <a class="logo" href="{% url 'index' %}">
+          Bingo
+        </a>
+        <nav>
+          <a href="{% url 'index' %}">Home</a>
+        </nav>
+      </div>
+    </header>
+    <div class="container">
+      {% if messages %}
+      <div class="flash-messages">
+        {% for message in messages %}
+        <div class="flash flash-{{ message.tags }}" role="alert">
+          {{ message }}
+        </div>
+        {% endfor %}
+      </div>
+      {% endif %}
+      {% block content %}{% endblock %}
+    </div>
+    <footer>
+      <div class="container text-small">
+        Version {{ version }}
+      </div>
+    </footer>
+  </body>
+</html>

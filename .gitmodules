@@ -1,0 +1,3 @@
+[submodule "utilities/frontend/primer"]
+	path = utilities/frontend/primer
+	url = https://github.com/primer/primer-css.git
