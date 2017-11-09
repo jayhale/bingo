@@ -1,0 +1,7 @@
+dj-database-url
+django
+django-sesame
+django-sgapi
+libsass
+psycopg2
+whitenoise
