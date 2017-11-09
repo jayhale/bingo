@@ -1,64 +1,154 @@
 {% extends 'base.html' %}
 
 {% block content %}
+<nav aria-label="Breadcrumb">
+  <ol>
+    <li class="breadcrumb-item text-small">
+      <a href="{% url 'cards' %}">My cards</a>
+    </li>
+    <li class="breadcrumb-item text-small breadcrumb-item-selected">
+      {{ card }} - {{ card.week }}
+    </li>
+  </ol>
+</nav>
 <h1>Good luck!</h1>
-<div class="columns">
-  <div class="one-fifth column">
-    <nav class="menu">
-      <span class="menu-heading">Player</span>
-      {% for u in users %}
-      <a href="{% url 'cards' u.pk %}" class="menu-item{% if u.pk is user.pk %} selected{% endif %}">
-        {{ u.get_full_name }}
+<p class="lead">
+  Win by first getting bingo - then use the phrase in the center square in a
+  comment without getting a reaction from the professor.
+</p>
+<table class="data-table">
+  <tr>
+    <td {% if squares.0.checked %}class="bg-yellow-light"{% endif %}>
+      <a href="{% url 'card' card.week.pk %}?toggle_square={{ squares.0.pk }}">
+        {{ squares.0 }}
       </a>
-      {% endfor %}
-    </nav>
-  </div>
-  <div class="one-fifth column">
-    <nav class="menu">
-      <span class="menu-heading">Week</span>
-      {% for card in cards %}
-      <a href="{% url 'card' user.pk week.pk %}" class="menu-item">{{ card }}</a>
-      {% endfor %}
-    </nav>
-  </div>
-  <div class="three-fifths column">
-    <table class="data-table">
-      <tr>
-        <td>1</td>
-        <td>2</td>
-        <td>3</td>
-        <td>4</td>
-        <td>5</td>
-      </tr>
-      <tr>
-        <td>6</td>
-        <td>7</td>
-        <td>8</td>
-        <td>9</td>
-        <td>10</td>
-      </tr>
-      <tr>
-        <td>11</td>
-        <td>12</td>
-        <td>13</td>
-        <td>14</td>
-        <td>15</td>
-      </tr>
-      <tr>
-        <td>16</td>
-        <td>17</td>
-        <td>18</td>
-        <td>19</td>
-        <td>20</td>
-      </tr>
-      <tr>
-        <td>21</td>
-        <td>22</td>
-        <td>23</td>
-        <td>24</td>
-        <td>25</td>
-      </tr>
-    </table>
-  </div>
-</div>
+    </td>
+    <td {% if squares.1.checked %}class="bg-yellow-light"{% endif %}>
+      <a href="{% url 'card' card.week.pk %}?toggle_square={{ squares.1.pk }}">
+        {{ squares.1 }}
+      </a>
+    </td>
+    <td {% if squares.2.checked %}class="bg-yellow-light"{% endif %}>
+      <a href="{% url 'card' card.week.pk %}?toggle_square={{ squares.2.pk }}">
+        {{ squares.2 }}
+      </a>
+    </td>
+    <td {% if squares.3.checked %}class="bg-yellow-light"{% endif %}>
+      <a href="{% url 'card' card.week.pk %}?toggle_square={{ squares.3.pk }}">
+        {{ squares.3 }}
+      </a>
+    </td>
+    <td {% if squares.4.checked %}class="bg-yellow-light"{% endif %}>
+      <a href="{% url 'card' card.week.pk %}?toggle_square={{ squares.4.pk }}">
+        {{ squares.4 }}
+      </a>
+    </td>
+  </tr>
+  <tr>
+    <td {% if squares.5.checked %}class="bg-yellow-light"{% endif %}>
+      <a href="{% url 'card' card.week.pk %}?toggle_square={{ squares.5.pk }}">
+        {{ squares.5 }}
+      </a>
+    </td>
+    <td {% if squares.6.checked %}class="bg-yellow-light"{% endif %}>
+      <a href="{% url 'card' card.week.pk %}?toggle_square={{ squares.6.pk }}">
+        {{ squares.6 }}
+      </a>
+    </td>
+    <td {% if squares.7.checked %}class="bg-yellow-light"{% endif %}>
+      <a href="{% url 'card' card.week.pk %}?toggle_square={{ squares.7.pk }}">
+        {{ squares.7 }}
+      </a>
+    </td>
+    <td {% if squares.8.checked %}class="bg-yellow-light"{% endif %}>
+      <a href="{% url 'card' card.week.pk %}?toggle_square={{ squares.8.pk }}">
+        {{ squares.8 }}
+      </a>
+    </td>
+    <td {% if squares.9.checked %}class="bg-yellow-light"{% endif %}>
+      <a href="{% url 'card' card.week.pk %}?toggle_square={{ squares.9.pk }}">
+        {{ squares.9 }}
+      </a>
+    </td>
+  </tr>
+  <tr>
+    <td {% if squares.10.checked %}class="bg-yellow-light"{% endif %}>
+      <a href="{% url 'card' card.week.pk %}?toggle_square={{ squares.10.pk }}">
+        {{ squares.10 }}
+      </a>
+    </td>
+    <td {% if squares.11.checked %}class="bg-yellow-light"{% endif %}>
+      <a href="{% url 'card' card.week.pk %}?toggle_square={{ squares.11.pk }}">
+        {{ squares.11 }}
+      </a>
+    </td>
+    <td class="bg-gray">
+      <strong>{{ card }}</strong>
+    </td>
+    <td {% if squares.12.checked %}class="bg-yellow-light"{% endif %}>
+      <a href="{% url 'card' card.week.pk %}?toggle_square={{ squares.12.pk }}">
+        {{ squares.12 }}
+      </a>
+    </td>
+    <td {% if squares.13.checked %}class="bg-yellow-light"{% endif %}>
+      <a href="{% url 'card' card.week.pk %}?toggle_square={{ squares.13.pk }}">
+        {{ squares.13 }}
+      </a>
+    </td>
+  </tr>
+  <tr>
+    <td {% if squares.14.checked %}class="bg-yellow-light"{% endif %}>
+      <a href="{% url 'card' card.week.pk %}?toggle_square={{ squares.14.pk }}">
+        {{ squares.14 }}
+      </a>
+    </td>
+    <td {% if squares.15.checked %}class="bg-yellow-light"{% endif %}>
+      <a href="{% url 'card' card.week.pk %}?toggle_square={{ squares.15.pk }}">
+        {{ squares.15 }}
+      </a>
+    </td>
+    <td {% if squares.16.checked %}class="bg-yellow-light"{% endif %}>
+      <a href="{% url 'card' card.week.pk %}?toggle_square={{ squares.16.pk }}">
+        {{ squares.16 }}
+      </a>
+    </td>
+    <td {% if squares.17.checked %}class="bg-yellow-light"{% endif %}>
+      <a href="{% url 'card' card.week.pk %}?toggle_square={{ squares.17.pk }}">
+        {{ squares.17 }}
+      </a>
+    </td>
+    <td {% if squares.18.checked %}class="bg-yellow-light"{% endif %}>
+      <a href="{% url 'card' card.week.pk %}?toggle_square={{ squares.18.pk }}">
+        {{ squares.18 }}
+      </a>
+    </td>
+  </tr>
+  <tr>
+    <td {% if squares.19.checked %}class="bg-yellow-light"{% endif %}>
+      <a href="{% url 'card' card.week.pk %}?toggle_square={{ squares.19.pk }}">
+        {{ squares.19 }}
+      </a>
+    </td>
+    <td {% if squares.20.checked %}class="bg-yellow-light"{% endif %}>
+      <a href="{% url 'card' card.week.pk %}?toggle_square={{ squares.20.pk }}">
+        {{ squares.20 }}
+      </a>
+    </td>
+    <td {% if squares.21.checked %}class="bg-yellow-light"{% endif %}>
+      <a href="{% url 'card' card.week.pk %}?toggle_square={{ squares.21.pk }}">
+        {{ squares.21 }}
+      </a>
+    </td>
+    <td {% if squares.22.checked %}class="bg-yellow-light"{% endif %}>
+      <a href="{% url 'card' card.week.pk %}?toggle_square={{ squares.22.pk }}">
+        {{ squares.22 }}
+      </a>
+    </td>
+    <td {% if squares.23.checked %}class="bg-yellow-light"{% endif %}>
+      <a href="{% url 'card' card.week.pk %}?toggle_square={{ squares.23.pk }}">
+        {{ squares.23 }}
+      </a>
+    </td>
+  </tr>
+</table>
 {% endblock %}

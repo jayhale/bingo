@@ -4,21 +4,13 @@
 <h1>Which week?</h1>
 <p class="lead">Pick the week that you want to see</p>
 <div class="columns">
-  <div class="one-fifth column">
-    <nav class="menu">
-      <span class="menu-heading">Player</span>
-      {% for u in users %}
-      <a href="{% url 'cards' u.pk %}" class="menu-item{% if u.pk is user.pk %} selected{% endif %}">
-        {{ u.get_full_name }}
-      </a>
-      {% endfor %}
-    </nav>
-  </div>
-  <div class="one-fifth column">
+  <div class="one-half column centered">
     <nav class="menu">
       <span class="menu-heading">Week</span>
       {% for card in cards %}
-      <a href="{% url 'card' user.pk card.week.pk %}" class="menu-item">{{ card }}</a>
+      <a href="{% url 'card' card.week.pk %}" class="menu-item">
+        {{ card.week }} - {{ card }}
+      </a>
       {% endfor %}
     </nav>
   </div>

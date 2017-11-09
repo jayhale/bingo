@@ -10,6 +10,12 @@ SECRET_KEY = os.environ.get('SECRET_KEY', None)
 # Application definition
 
 INSTALLED_APPS = [
+    # Internal apps
+    'accounts',
+    'utilities',
+    'cards',
+
+    # Background stuff
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -17,8 +23,6 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'whitenoise.runserver_nostatic',
     'django.contrib.staticfiles',
-    'cards',
-    'utilities',
 ]
 
 MIDDLEWARE = [
@@ -30,6 +34,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'sesame.middleware.AuthenticationMiddleware',
 ]
 
 ROOT_URLCONF = 'bingo.urls'
@@ -62,8 +67,10 @@ DATABASES = {
 }
 
 
-# Password validation
+# Authentication
 # https://docs.djangoproject.com/en/1.11/ref/settings/#auth-password-validators
+
+AUTHENTICATION_BACKENDS = ( 'sesame.backends.ModelBackend', )
 
 AUTH_PASSWORD_VALIDATORS = [
     {
@@ -79,6 +86,8 @@ AUTH_PASSWORD_VALIDATORS = [
         'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
     },
 ]
+
+NOPASSWORD_EMAIL_SUBJECT = 'Login link for bingo'
 
 
 # Internationalization
@@ -103,3 +112,12 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATIC_URL = '/static/'
 
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+
+
+# Email
+
+EMAIL_BACKEND = 'sgbackend.SendGridBackend'
+
+SENDGRID_API_KEY = os.environ.get('SENDGRID_API_KEY', None)
+
+FROM_EMAIL = os.environ.get('DJANGO_FROM_EMAIL')

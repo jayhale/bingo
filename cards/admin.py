@@ -14,7 +14,8 @@ admin.site.register(CardSquare, CardSquareAdmin)
 
 
 class SquareAdmin(admin.ModelAdmin):
-    pass
+    exclude = ('order', )
+    list_filter = ('week', )
 admin.site.register(Square, SquareAdmin)
 
 

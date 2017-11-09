@@ -19,6 +19,15 @@ class CardSquare(models.Model):
     checked = models.BooleanField(default=False)
 
 
+    def __str__(self):
+        return str(self.square)
+
+
+    def toggle(self):
+        self.checked = not self.checked
+        return self
+
+
 class Week(models.Model):
     """Stores a Week, into which Squares are grouped"""
     name = models.CharField(max_length=128)
@@ -26,7 +35,7 @@ class Week(models.Model):
     end = models.DateField()
 
     def __str__(self):
-        return self.name
+        return str(self.start)
 
     def save(self, *args, **kwargs):
         super(Week, self).save(*args, **kwargs)
@@ -54,7 +63,7 @@ class Card(models.Model):
 
 
     def __str__(self):
-        return str(self.week.start)
+        return str(self.week.name)
 
 
     def clean(self, *args, **kwargs):
@@ -74,6 +83,22 @@ class Card(models.Model):
                         ).format(key, keys.count(str(key)))})
 
         return super(Card, self).clean(self, *args, **kwargs)
+
+
+    def get_order_list(self):
+        return [ int(x) for x in self.order.split(ORDER_LIST_SEPARATOR) ]
+
+
+    def get_ordered_squares(self):
+        squares = Square.objects.filter(week=self.week)
+        
+        return [ 
+            CardSquare.objects.get(
+                square=squares.get(order=x), 
+                card=self) for x in self.get_order_list()
+            ]
+
+
             
 
     def save(self, *args, **kwargs):
@@ -116,7 +141,7 @@ class Square(models.Model):
                     'week starting {:%Y-%m-%d}, there are already {} '
                     'squares').format(self.week.start, MAX_SQUARES))
 
-        return super(Card, self).clean(*args, **kwargs)
+        return super(Square, self).clean(*args, **kwargs)
 
 
     def save(self, *args, **kwargs):
@@ -125,13 +150,13 @@ class Square(models.Model):
             self.order = 0
             prev_squares = Square.objects.filter(week=self.week)
             if prev_squares:
-                self.order = prev_squares.aggregate(models.Max('order')) + 1
+                self.order = prev_squares.aggregate(models.Max('order'))['order__max'] + 1
         
         super(Square, self).save(*args, **kwargs)
 
         # Ensure every card has the square
         for card in self.week.card_set.all():
-            if not CardSquare.objects.filter(card=card, week=self.week):
-                CardSquare.objects.create(card=card, week=self.week)
+            if not CardSquare.objects.filter(card=card, square=self):
+                CardSquare.objects.create(card=card, square=self)
 
         return self

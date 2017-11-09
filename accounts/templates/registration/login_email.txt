@@ -1,0 +1,7 @@
+Hello!
+
+Please log in with the link below:
+{{ url }}
+
+Sincerely,
+A banana

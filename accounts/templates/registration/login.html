@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+
+{% load utility_tags %}
+
+{% block title %}Bingo | Log In{% endblock %}
+
+{% block content %}
+<div class="columns">
+  <div class="one-half column centered">
+    <h1>Login</h1>
+    <p class="lead">Enter an email to have a login link emailed to you</p>
+    <form method="post">
+      {% csrf_token %}
+      {% if form.non_field_errors %}
+      <ul class="list-group">
+        {% for error in form.non_field_errors %}
+        <li class="list-group-item list-group-item-danger">
+          {{ error }}
+        </li>
+        {% endfor %}
+      </ul>
+      {% endif %}
+      {% for field in form %}
+      <dl class="form-group{% if field.errors %} errored{% endif %}">
+        <dt>
+          <label for="{{ field.id_for_label }}">{{ field.label }}</label>
+          {% if field.help_text %}
+          <small class="text-gray">
+            {{ field.help_text|safe }}
+          </small>
+          {% endif %}
+        </dt>
+        <dd>
+          {{ field|add_css:'form-control' }}
+        </dd>
+        {% if field.errors %}
+        <dd class="error">
+          {% for error in field.errors %}
+          {{ error }}{% if not forloop.last %}<br />{% endif %}
+          {% endfor %}
+        </dd>
+        {% endif %}
+      </dl>
+      {% endfor %}
+      <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+  </div>
+</div>
+{% endblock %}
