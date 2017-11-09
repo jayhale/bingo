@@ -2,6 +2,7 @@ dj-database-url
 django
 django-sesame
 django-sgapi
+gunicorn
 libsass
 psycopg2
 whitenoise
