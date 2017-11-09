@@ -1,1 +1,1 @@
-web: gunicorn flights.wsgi:application
+web: gunicorn bingo.wsgi:application
