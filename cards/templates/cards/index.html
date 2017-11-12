@@ -1,18 +1,25 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<h1>Which week?</h1>
-<p class="lead">Pick the week that you want to see</p>
+<h1 class="title">Which week?</h1>
+<p class="subtitle">Pick the week that you want to see</p>
 <div class="columns">
-  <div class="one-half column centered">
-    <nav class="menu">
-      <span class="menu-heading">Week</span>
-      {% for card in cards %}
-      <a href="{% url 'card' card.week.pk %}" class="menu-item">
-        {{ card.week }} - {{ card }}
-      </a>
-      {% endfor %}
-    </nav>
+  <div class="column is-half is-offset-one-quarter">
+    {% for card in cards %}
+    <div class="card">
+      <header class="card-header">
+        <a class="card-header-title" href="{% url 'card' card.week.pk %}">
+          {{ card.week.start|date }} to {{ card.week.end|date }}
+        </a>
+        <span class="tag is-primary">Active</span>
+      </header>
+      <div class="card-content">
+        <div class="content">
+          {{ card }}
+        </div>
+      </div>
+    </div>
+    {% endfor %}
   </div>
 </div>
 {% endblock %}

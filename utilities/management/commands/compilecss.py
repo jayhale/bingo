@@ -13,8 +13,7 @@ class Command(BaseCommand):
         parser.add_argument(
             '--searchpath',
             help='Additional path to include in the libsass search path',
-            default=os.path.join(settings.BASE_DIR, 'utilities', 'frontend', 
-                'primer', 'modules')
+            default=os.path.join(settings.BASE_DIR, 'utilities', 'frontend')
         )
 
         parser.add_argument(
