@@ -1,3 +1,4 @@
+from datetime import date
 from random import shuffle
 
 from django.core.exceptions import ValidationError
@@ -34,8 +35,18 @@ class Week(models.Model):
     start = models.DateField()
     end = models.DateField()
 
+
+    class Meta:
+        ordering = ('-start',)
+
+
     def __str__(self):
         return str(self.start)
+
+
+    def is_active(self):
+        return self.start <= date.today() <= self.end
+
 
     def save(self, *args, **kwargs):
         super(Week, self).save(*args, **kwargs)
@@ -59,6 +70,7 @@ class Card(models.Model):
 
 
     class Meta:
+        order_with_respect_to = 'week'
         unique_together = (('user', 'week'),)
 
 
@@ -99,7 +111,9 @@ class Card(models.Model):
             ]
 
 
-            
+    def is_active(self):
+        return self.week.is_active()
+
 
     def save(self, *args, **kwargs):
         # Set the order
