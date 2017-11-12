@@ -11,7 +11,9 @@
         <a class="card-header-title" href="{% url 'card' card.week.pk %}">
           {{ card.week.start|date }} to {{ card.week.end|date }}
         </a>
+        {% if card.is_active %}
         <span class="tag is-primary">Active</span>
+        {% endif %}
       </header>
       <div class="card-content">
         <div class="content">
