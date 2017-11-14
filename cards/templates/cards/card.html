@@ -1,14 +1,7 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<nav class="breadcrumb" aria-label="Breadcrumb">
-  <ul>
-    <li><a href="{% url 'cards' %}">My cards</a></li>
-    <li class="is-active">
-      <a href="#" aria-current="page">{{ card }} - {{ card.week.start|date }}</a>
-    </li>
-  </ul>
-</nav>
+{% include 'cards/partials/breadcrumbs.html' %}
 <h1 class="title">Good luck!</h1>
 <p class="subtitle">
   Win by first getting bingo then use the phrase in the center square in a

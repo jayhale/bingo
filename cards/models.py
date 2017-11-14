@@ -29,6 +29,10 @@ class CardSquare(models.Model):
         return self
 
 
+    def checked_count(self):
+        return self.square.checked_count()
+
+
 class Week(models.Model):
     """Stores a Week, into which Squares are grouped"""
     name = models.CharField(max_length=128)
@@ -48,7 +52,11 @@ class Week(models.Model):
 
 
     def is_active(self):
-        return self.start <= date.today() <= self.end
+        return not self.winner
+
+
+    def participating_count(self):
+        return sum([ c.is_participating() for c in self.card_set.all() ])
 
 
     def save(self, *args, **kwargs):
@@ -118,6 +126,10 @@ class Card(models.Model):
         return self.week.is_active()
 
 
+    def is_participating(self):
+        return self.cardsquare_set.filter(checked=True).count() > 0
+
+
     def save(self, *args, **kwargs):
         # Set the order
         if not self.order:
@@ -159,6 +171,10 @@ class Square(models.Model):
                     'squares').format(self.week.start, MAX_SQUARES))
 
         return super(Square, self).clean(*args, **kwargs)
+
+
+    def checked_count(self):
+        return self.cardsquare_set.filter(checked=True).count()
 
 
     def save(self, *args, **kwargs):

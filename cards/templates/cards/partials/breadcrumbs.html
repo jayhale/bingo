@@ -1,0 +1,12 @@
+<nav class="breadcrumb" aria-label="Breadcrumb">
+  <ul>
+    <li><a href="{% url 'cards' %}">All cards</a></li>
+    <li class="is-active">
+      <a href="#" aria-current="page">
+        {{ card }}
+        -
+        {{ card.week.start|date }}
+      </a>
+    </li>
+  </ul>
+</nav>

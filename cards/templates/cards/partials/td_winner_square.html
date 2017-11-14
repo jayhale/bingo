@@ -1,0 +1,6 @@
+<td class="has-text-centered{% if square.checked %} is-primary-light{% endif %}">
+  <progress class="progress is-small" value="{{ square.checked_count }}" max="{{ square_progress_max }}">
+    {{ square.checked_count }}
+  </progress>
+  {{ square }}
+</td>
