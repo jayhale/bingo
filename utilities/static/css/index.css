@@ -6497,3 +6497,6 @@ label.panel-block {
 .footer {
   margin-top: 3rem;
   border-top: 1px solid #ffdd57; }
+
+.card {
+  margin-bottom: 2rem; }
