@@ -34,6 +34,7 @@ class Week(models.Model):
     name = models.CharField(max_length=128)
     start = models.DateField()
     end = models.DateField()
+    published = models.BooleanField(default=False)
 
 
     class Meta:

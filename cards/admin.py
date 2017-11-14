@@ -20,5 +20,5 @@ admin.site.register(Square, SquareAdmin)
 
 
 class WeekAdmin(admin.ModelAdmin):
-    pass
+    list_filter = ('published', )
 admin.site.register(Week, WeekAdmin)
