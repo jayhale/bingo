@@ -34,6 +34,8 @@ class Week(models.Model):
     name = models.CharField(max_length=128)
     start = models.DateField()
     end = models.DateField()
+    winner = models.ForeignKey(get_user_model(), on_delete=models.SET_NULL,
+        blank=True, null=True, default=None)
     published = models.BooleanField(default=False)
 
 
