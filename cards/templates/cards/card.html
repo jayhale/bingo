@@ -2,7 +2,12 @@
 
 {% block content %}
 {% include 'cards/partials/breadcrumbs.html' %}
-<h1 class="title">Good luck!</h1>
+<h1 class="title">
+  Good luck!
+  {% if card.is_active %}
+  <span class="tag is-primary is-pulled-right">Active</span>
+  {% endif %}
+</h1>
 <p class="subtitle">
   Win by first getting bingo then use the phrase in the center square in a
   comment without getting a reaction from the professor.
@@ -10,137 +15,41 @@
 <table class="table is-bordered is-fullwidth">
   <tbody>
     <tr>
-      <td {% if squares.0.checked %}class="is-primary-light"{% endif %}>
-        <a href="{% url 'card' card.week.pk %}?toggle_square={{ squares.0.pk }}">
-          {{ squares.0 }}
-        </a>
-      </td>
-      <td {% if squares.1.checked %}class="is-primary-light"{% endif %}>
-        <a href="{% url 'card' card.week.pk %}?toggle_square={{ squares.1.pk }}">
-          {{ squares.1 }}
-        </a>
-      </td>
-      <td {% if squares.2.checked %}class="is-primary-light"{% endif %}>
-        <a href="{% url 'card' card.week.pk %}?toggle_square={{ squares.2.pk }}">
-          {{ squares.2 }}
-        </a>
-      </td>
-      <td {% if squares.3.checked %}class="is-primary-light"{% endif %}>
-        <a href="{% url 'card' card.week.pk %}?toggle_square={{ squares.3.pk }}">
-          {{ squares.3 }}
-        </a>
-      </td>
-      <td {% if squares.4.checked %}class="is-primary-light"{% endif %}>
-        <a href="{% url 'card' card.week.pk %}?toggle_square={{ squares.4.pk }}">
-          {{ squares.4 }}
-        </a>
-      </td>
+      {% include 'cards/partials/td_square.html' with square=squares.0 %}
+      {% include 'cards/partials/td_square.html' with square=squares.1 %}
+      {% include 'cards/partials/td_square.html' with square=squares.2 %}
+      {% include 'cards/partials/td_square.html' with square=squares.3 %}
+      {% include 'cards/partials/td_square.html' with square=squares.4 %}
     </tr>
     <tr>
-      <td {% if squares.5.checked %}class="is-primary-light"{% endif %}>
-        <a href="{% url 'card' card.week.pk %}?toggle_square={{ squares.5.pk }}">
-          {{ squares.5 }}
-        </a>
-      </td>
-      <td {% if squares.6.checked %}class="is-primary-light"{% endif %}>
-        <a href="{% url 'card' card.week.pk %}?toggle_square={{ squares.6.pk }}">
-          {{ squares.6 }}
-        </a>
-      </td>
-      <td {% if squares.7.checked %}class="is-primary-light"{% endif %}>
-        <a href="{% url 'card' card.week.pk %}?toggle_square={{ squares.7.pk }}">
-          {{ squares.7 }}
-        </a>
-      </td>
-      <td {% if squares.8.checked %}class="is-primary-light"{% endif %}>
-        <a href="{% url 'card' card.week.pk %}?toggle_square={{ squares.8.pk }}">
-          {{ squares.8 }}
-        </a>
-      </td>
-      <td {% if squares.9.checked %}class="is-primary-light"{% endif %}>
-        <a href="{% url 'card' card.week.pk %}?toggle_square={{ squares.9.pk }}">
-          {{ squares.9 }}
-        </a>
-      </td>
+      {% include 'cards/partials/td_square.html' with square=squares.5 %}
+      {% include 'cards/partials/td_square.html' with square=squares.6 %}
+      {% include 'cards/partials/td_square.html' with square=squares.7 %}
+      {% include 'cards/partials/td_square.html' with square=squares.8 %}
+      {% include 'cards/partials/td_square.html' with square=squares.9 %}
     </tr>
     <tr>
-      <td {% if squares.10.checked %}class="is-primary-light"{% endif %}>
-        <a href="{% url 'card' card.week.pk %}?toggle_square={{ squares.10.pk }}">
-          {{ squares.10 }}
-        </a>
-      </td>
-      <td {% if squares.11.checked %}class="is-primary-light"{% endif %}>
-        <a href="{% url 'card' card.week.pk %}?toggle_square={{ squares.11.pk }}">
-          {{ squares.11 }}
-        </a>
-      </td>
+      {% include 'cards/partials/td_square.html' with square=squares.10 %}
+      {% include 'cards/partials/td_square.html' with square=squares.11 %}
       <td class="is-grey-lighter">
         <strong>{{ card }}</strong>
       </td>
-      <td {% if squares.12.checked %}class="is-primary-light"{% endif %}>
-        <a href="{% url 'card' card.week.pk %}?toggle_square={{ squares.12.pk }}">
-          {{ squares.12 }}
-        </a>
-      </td>
-      <td {% if squares.13.checked %}class="is-primary-light"{% endif %}>
-        <a href="{% url 'card' card.week.pk %}?toggle_square={{ squares.13.pk }}">
-          {{ squares.13 }}
-        </a>
-      </td>
+      {% include 'cards/partials/td_square.html' with square=squares.12 %}
+      {% include 'cards/partials/td_square.html' with square=squares.13 %}
     </tr>
     <tr>
-      <td {% if squares.14.checked %}class="is-primary-light"{% endif %}>
-        <a href="{% url 'card' card.week.pk %}?toggle_square={{ squares.14.pk }}">
-          {{ squares.14 }}
-        </a>
-      </td>
-      <td {% if squares.15.checked %}class="is-primary-light"{% endif %}>
-        <a href="{% url 'card' card.week.pk %}?toggle_square={{ squares.15.pk }}">
-          {{ squares.15 }}
-        </a>
-      </td>
-      <td {% if squares.16.checked %}class="is-primary-light"{% endif %}>
-        <a href="{% url 'card' card.week.pk %}?toggle_square={{ squares.16.pk }}">
-          {{ squares.16 }}
-        </a>
-      </td>
-      <td {% if squares.17.checked %}class="is-primary-light"{% endif %}>
-        <a href="{% url 'card' card.week.pk %}?toggle_square={{ squares.17.pk }}">
-          {{ squares.17 }}
-        </a>
-      </td>
-      <td {% if squares.18.checked %}class="is-primary-light"{% endif %}>
-        <a href="{% url 'card' card.week.pk %}?toggle_square={{ squares.18.pk }}">
-          {{ squares.18 }}
-        </a>
-      </td>
+      {% include 'cards/partials/td_square.html' with square=squares.14 %}
+      {% include 'cards/partials/td_square.html' with square=squares.15 %}
+      {% include 'cards/partials/td_square.html' with square=squares.16 %}
+      {% include 'cards/partials/td_square.html' with square=squares.17 %}
+      {% include 'cards/partials/td_square.html' with square=squares.18 %}
     </tr>
     <tr>
-      <td {% if squares.19.checked %}class="is-primary-light"{% endif %}>
-        <a href="{% url 'card' card.week.pk %}?toggle_square={{ squares.19.pk }}">
-          {{ squares.19 }}
-        </a>
-      </td>
-      <td {% if squares.20.checked %}class="is-primary-light"{% endif %}>
-        <a href="{% url 'card' card.week.pk %}?toggle_square={{ squares.20.pk }}">
-          {{ squares.20 }}
-        </a>
-      </td>
-      <td {% if squares.21.checked %}class="is-primary-light"{% endif %}>
-        <a href="{% url 'card' card.week.pk %}?toggle_square={{ squares.21.pk }}">
-          {{ squares.21 }}
-        </a>
-      </td>
-      <td {% if squares.22.checked %}class="is-primary-light"{% endif %}>
-        <a href="{% url 'card' card.week.pk %}?toggle_square={{ squares.22.pk }}">
-          {{ squares.22 }}
-        </a>
-      </td>
-      <td {% if squares.23.checked %}class="is-primary-light"{% endif %}>
-        <a href="{% url 'card' card.week.pk %}?toggle_square={{ squares.23.pk }}">
-          {{ squares.23 }}
-        </a>
-      </td>
+      {% include 'cards/partials/td_square.html' with square=squares.19 %}
+      {% include 'cards/partials/td_square.html' with square=squares.20 %}
+      {% include 'cards/partials/td_square.html' with square=squares.21 %}
+      {% include 'cards/partials/td_square.html' with square=squares.22 %}
+      {% include 'cards/partials/td_square.html' with square=squares.23 %}
     </tr>
   </tbody>
 </table>

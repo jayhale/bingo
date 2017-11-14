@@ -42,7 +42,7 @@ def card(request, week_pk, template_name='cards/card.html'):
         card_square.save()
 
     return render(request, template_name, {'card': card,
-        'squares': card.get_ordered_squares(), 'week': week })
+        'squares': card.get_ordered_squares() })
 
 
 @login_required
