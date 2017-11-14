@@ -9,7 +9,7 @@
     <div class="card">
       <header class="card-header">
         <a class="card-header-title" href="{% url 'card' card.week.pk %}">
-          {{ card.week.start|date }} to {{ card.week.end|date }}
+          {{ card.week.start|date }}
         </a>
         {% if card.is_active %}
         <span class="tag is-primary">Active</span>
@@ -22,9 +22,9 @@
       </div>
       {% if card.week.winner %}
       <div class="card-footer">
-        <span class="card-footer-item">
-          Won by {{ card.week.winner.get_full_name }}
-        </span>
+        <a class="card-footer-item" href="{% url 'winner' card.week.pk %}">
+          <strong>Won by {{ card.week.winner.get_full_name }}</strong>
+        </a>
       </div>
       {% endif %}
     </div>

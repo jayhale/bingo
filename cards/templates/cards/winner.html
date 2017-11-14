@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+
+{% block content %}
+{% include 'cards/partials/breadcrumbs.html' %}
+<h1 class="title">{{ card }}</h1>
+<p class="subtitle">
+  Won by {{ card.week.winner.get_full_name }}
+</p>
+<table class="table is-bordered is-fullwidth">
+  <tbody>
+    <tr>
+      {% include 'cards/partials/td_winner_square.html' with square=squares.0 %}
+      {% include 'cards/partials/td_winner_square.html' with square=squares.1 %}
+      {% include 'cards/partials/td_winner_square.html' with square=squares.2 %}
+      {% include 'cards/partials/td_winner_square.html' with square=squares.3 %}
+      {% include 'cards/partials/td_winner_square.html' with square=squares.4 %}
+    </tr>
+    <tr>
+      {% include 'cards/partials/td_winner_square.html' with square=squares.5 %}
+      {% include 'cards/partials/td_winner_square.html' with square=squares.6 %}
+      {% include 'cards/partials/td_winner_square.html' with square=squares.7 %}
+      {% include 'cards/partials/td_winner_square.html' with square=squares.8 %}
+      {% include 'cards/partials/td_winner_square.html' with square=squares.9 %}
+    </tr>
+    <tr>
+      {% include 'cards/partials/td_winner_square.html' with square=squares.10 %}
+      {% include 'cards/partials/td_winner_square.html' with square=squares.11 %}
+      <td class="is-grey-lighter">
+        <strong>{{ card }}</strong>
+      </td>
+      {% include 'cards/partials/td_winner_square.html' with square=squares.12 %}
+      {% include 'cards/partials/td_winner_square.html' with square=squares.13 %}
+    </tr>
+    <tr>
+      {% include 'cards/partials/td_winner_square.html' with square=squares.14 %}
+      {% include 'cards/partials/td_winner_square.html' with square=squares.15 %}
+      {% include 'cards/partials/td_winner_square.html' with square=squares.16 %}
+      {% include 'cards/partials/td_winner_square.html' with square=squares.17 %}
+      {% include 'cards/partials/td_winner_square.html' with square=squares.18 %}
+    </tr>
+    <tr>
+      {% include 'cards/partials/td_winner_square.html' with square=squares.19 %}
+      {% include 'cards/partials/td_winner_square.html' with square=squares.20 %}
+      {% include 'cards/partials/td_winner_square.html' with square=squares.21 %}
+      {% include 'cards/partials/td_winner_square.html' with square=squares.22 %}
+      {% include 'cards/partials/td_winner_square.html' with square=squares.23 %}
+    </tr>
+  </tbody>
+</table>
+{% endblock %}
