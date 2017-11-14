@@ -1,0 +1,9 @@
+<td {% if square.checked %}class="is-primary-light"{% endif %}>
+  {% if card.is_active %}
+  <a href="{% url 'card' card.week.pk %}?toggle_square={{ square.pk }}">
+    {{ square }}
+  </a>
+  {% else %}
+  {{ square }}
+  {% endif %}
+</td>

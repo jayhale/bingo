@@ -1,7 +1,8 @@
+from django.contrib import messages
 from django.contrib.auth import get_user_model
 from django.contrib.auth.decorators import login_required
 from django.http import Http404
-from django.shortcuts import get_object_or_404, render
+from django.shortcuts import get_object_or_404, render, redirect
 
 from cards.models import Card, Week, CardSquare
 
@@ -41,4 +42,15 @@ def card(request, week_pk, template_name='cards/card.html'):
         card_square.save()
 
     return render(request, template_name, {'card': card,
-        'squares': card.get_ordered_squares(), 'week': week, 'cards': cards})
+        'squares': card.get_ordered_squares() })
+
+
+@login_required
+def winner(request, week_pk, template_name='cards/winner.html'):
+    week = get_object_or_404(Week, pk=week_pk, published=True)
+    card = get_object_or_404(Card, week=week, user=week.winner)
+
+    return render(request, template_name, {'card': card,
+        'squares': card.get_ordered_squares(), 
+        'square_progress_max': week.participating_count() })
+
