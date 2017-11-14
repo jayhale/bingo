@@ -20,6 +20,13 @@
           {{ card }}
         </div>
       </div>
+      {% if card.week.winner %}
+      <div class="card-footer">
+        <span class="card-footer-item">
+          Won by {{ card.week.winner.get_full_name }}
+        </span>
+      </div>
+      {% endif %}
     </div>
     {% endfor %}
   </div>
