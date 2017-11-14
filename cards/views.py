@@ -11,7 +11,7 @@ User = get_user_model()
 @login_required
 def index(request, template_name='cards/index.html'):
     try:
-        cards = Card.objects.filter(user=request.user)
+        cards = Card.objects.filter(user=request.user, week__published=True)
     except Card.DoesNotExist:
         return Http404('The cards you\'re looking for could not be found')
 
@@ -20,7 +20,7 @@ def index(request, template_name='cards/index.html'):
 
 @login_required
 def card(request, week_pk, template_name='cards/card.html'):
-    week = get_object_or_404(Week, pk=week_pk)
+    week = get_object_or_404(Week, pk=week_pk, published=True)
 
     try:
         cards = Card.objects.filter(user=request.user)
