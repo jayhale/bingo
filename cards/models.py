@@ -71,7 +71,7 @@ class Card(models.Model):
 
 
     class Meta:
-        order_with_respect_to = 'week'
+        ordering = ('-week__start',)
         unique_together = (('user', 'week'),)
 
 
