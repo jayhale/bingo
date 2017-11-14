@@ -9,8 +9,12 @@
   {% endif %}
 </h1>
 <p class="subtitle">
+  {% if card.is_active %}
   Win by first getting bingo then use the phrase in the center square in a
   comment without getting a reaction from the professor.
+  {% else %}
+  Won by <a href="{% url 'winner' card.week.pk %}">{{ card.week.winner.get_full_name }}</a>
+  {% endif %}
 </p>
 <table class="table is-bordered is-fullwidth">
   <tbody>
