@@ -22,13 +22,15 @@
             <span></span>
           </button>
         </div>
-        <div class="navbar-menu" id="navbar-menu">
-          {% if user.is_authenticated %}
-          <span class="navbar-item">{{ user.get_full_name }}</span>
-          <a class="navbar-item" href="{% url 'logout' %}">Logout</a>
-          {% else %}
-          <a class="navbar-item" href="{% url 'login' %}">Login</a>
-          {% endif %}
+        <div class="navbar-end">
+          <div class="navbar-menu" id="navbar-menu">
+            {% if user.is_authenticated %}
+            <span class="navbar-item">{{ user.get_full_name }}</span>
+            <a class="navbar-item" href="{% url 'logout' %}">Logout</a>
+            {% else %}
+            <a class="navbar-item" href="{% url 'login' %}">Login</a>
+            {% endif %}
+          </div>
         </div>
       </div>
     </nav>
