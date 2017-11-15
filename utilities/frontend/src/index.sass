@@ -1,0 +1,55 @@
+
+@import "bulma/sass/utilities/initial-variables"
+@import "bulma/sass/utilities/functions"
+
+$primary: $yellow
+$primary-invert: $black
+
+$footer-background-color: $white
+
+@import 'bulma/bulma'
+
+.container
+  max-width: $tablet
+  padding-left: 1rem
+  padding-right: 1rem
+
+
+.is-primary-light
+  background-color: lighten($primary, 15%)
+
+
+.is-grey-lighter
+  background-color: $grey-lighter
+
+
+.navbar
+  margin-bottom: 1rem
+
+
+.navbar-brand .brand-text
+  font-size: 1.11rem
+  font-weight: bold
+
+
+.navbar-menu.is-active
+  margin-bottom: 1rem
+  +touch
+    min-width: 120px
+    position: absolute
+    right: 1rem
+    top: 50px
+    z-index: 100
+
+
+.card-header .tag
+  margin: 0.75rem
+
+
+.footer
+  margin-top: 3rem
+  border-top: 1px solid $yellow
+
+
+.card
+  margin-bottom: 2rem

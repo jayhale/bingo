@@ -6491,6 +6491,16 @@ label.panel-block {
   font-size: 1.11rem;
   font-weight: bold; }
 
+.navbar-menu.is-active {
+  margin-bottom: 1rem; }
+  @media screen and (max-width: 1023px) {
+    .navbar-menu.is-active {
+      min-width: 120px;
+      position: absolute;
+      right: 1rem;
+      top: 50px;
+      z-index: 100; } }
+
 .card-header .tag {
   margin: 0.75rem; }
 
