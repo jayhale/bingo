@@ -7,6 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>{% block title %}Bingo{% endblock %}</title>
     <link rel="stylesheet" type="text/css" media="all" href="{% static 'css/index.css' %}">
+    <link rel="stylesheet" type="text/css" media="all" href="{% static 'css/font-awesome.min.css' %}">
     {% block extraheaders %}{% endblock %}
   </head>
   <body>
@@ -34,13 +35,15 @@
         </div>
       </div>
     </nav>
-    <div class="container">
-      {% for message in messages %}
-      <div class="notification is-{{ message.tags }}" role="alert">
-        {{ message }}
+    <div class="section">
+      <div class="container">
+        {% for message in messages %}
+        <div class="notification is-{{ message.tags }}" role="alert">
+          {{ message }}
+        </div>
+        {% endfor %}
+        {% block content %}{% endblock %}
       </div>
-      {% endfor %}
-      {% block content %}{% endblock %}
     </div>
     <footer class="footer is-size-7 has-text-centered">
       <div class="container">
@@ -74,5 +77,7 @@
 
       });
     </script>
+    <script src="{% static 'js/jquery-3.2.1.js' %}" type="text/javascript"></script>
+    {% block javascript %}{% endblock %}
   </body>
 </html>

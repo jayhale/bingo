@@ -1,0 +1,17 @@
+<div class="card" id="center_square_idea_{{ idea.pk }}">
+  <div class="card-content">
+    <div class="content">
+      {{ idea }}
+    </div>
+  </div>
+  <div class="card-footer">
+    <a class="card-footer-item" href="{% url 'ajax_new_center_square_vote' %}">
+      <i class="fa fa-thumbs-up" aria-hidden="true"></i>
+      <span class="tag is-rounded">{{ idea.positive_vote_count }}</span>
+    </a>
+    <a class="card-footer-item" href="{% url 'ajax_new_center_square_vote' %}">
+      <i class="fa fa-thumbs-down" aria-hidden="true"></i>
+      <span class="tag is-rounded">{{ idea.negative_vote_count }}</span>
+    </a>
+  </div>
+</div>

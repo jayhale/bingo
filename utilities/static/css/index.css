@@ -6474,9 +6474,7 @@ label.panel-block {
   padding: 3rem 1.5rem 6rem; }
 
 .container {
-  max-width: 769px;
-  padding-left: 1rem;
-  padding-right: 1rem; }
+  max-width: 1024px; }
 
 .is-primary-light {
   background-color: #ffeda3; }
@@ -6484,22 +6482,17 @@ label.panel-block {
 .is-grey-lighter {
   background-color: #dbdbdb; }
 
-.navbar {
-  margin-bottom: 1rem; }
-
 .navbar-brand .brand-text {
   font-size: 1.11rem;
   font-weight: bold; }
 
-.navbar-menu.is-active {
-  margin-bottom: 1rem; }
-  @media screen and (max-width: 1023px) {
-    .navbar-menu.is-active {
-      min-width: 120px;
-      position: absolute;
-      right: 1rem;
-      top: 50px;
-      z-index: 100; } }
+@media screen and (max-width: 1023px) {
+  .navbar-menu.is-active {
+    min-width: 120px;
+    position: absolute;
+    right: 1rem;
+    top: 50px;
+    z-index: 100; } }
 
 .card-header .tag {
   margin: 0.75rem; }

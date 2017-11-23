@@ -5,6 +5,7 @@ from django.http import Http404
 from django.shortcuts import get_object_or_404, render, redirect
 
 from cards.models import Card, Week, CardSquare
+from ideas.models import CenterSquareIdea, SquareIdea
 
 User = get_user_model()
 
@@ -16,7 +17,16 @@ def index(request, template_name='cards/index.html'):
     except Card.DoesNotExist:
         return Http404('The cards you\'re looking for could not be found')
 
-    return render(request, template_name, {'cards': cards})
+    center_square_ideas = CenterSquareIdea.objects.all()
+    square_ideas = SquareIdea.objects.all()
+
+    return render(request, template_name,
+        {
+            'cards': cards, 
+            'center_square_ideas': center_square_ideas, 
+            'square_ideas': square_ideas,
+        }
+    )
 
 
 @login_required

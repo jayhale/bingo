@@ -1,10 +1,11 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<h1 class="title">Which week?</h1>
-<p class="subtitle">Pick the week that you want to see</p>
+<h1 class="title">Section E Bingo!</h1>
 <div class="columns">
-  <div class="column is-half is-offset-one-quarter">
+
+  <div class="column">
+    <h2 class="title is-4">Your bingo cards</h2>
     {% for card in cards %}
     <div class="card">
       <header class="card-header">
@@ -30,5 +31,64 @@
     </div>
     {% endfor %}
   </div>
+
+  <div class="column">
+    <h2 class="title is-4">Center square ideas</h2>
+    {% include 'ideas/partials/center_square_idea_form.html' %}
+    <div id="center_square_ideas">
+      {% for idea in center_square_ideas %}
+      {% include 'ideas/partials/center_square_idea.html' %}
+      {% endfor %}
+    </div>
+  </div>
+
+  <div class="column">
+    <h2 class="title is-4">Bingo square ideas</h2>
+
+    <div id="square_ideas">
+
+    </div>
+  </div>
+
 </div>
+{% endblock %}
+
+{% block javascript %}
+<script type="text/javascript">
+/* New center square idea */
+$('#center_square_idea_form').on('submit', function(event){
+  event.preventDefault();
+  $.ajax({
+    url: "{% url 'ajax_new_center_square_idea' %}",
+    type: "GET",
+    data: {
+      content: $('#center_square_idea_content').val()
+    },
+    success: function(data) {
+      $('#center_square_idea_content').val('');
+      $('#center_square_ideas').prepend(data.content);
+    }
+  });
+});
+
+/* New bingo square idea */
+$('#square_idea_form').on('submit', function(event){
+  event.preventDefault();
+  $.ajax({
+    url: "{% url 'ajax_new_square_idea' %}",
+    type: "GET",
+    data: {
+      content: $('#square_idea_content').val()
+    },
+    success: function(data) {
+      $('#square_idea_content').val('');
+      $('#square_ideas').prepend(data.content);
+    }
+  });
+});
+
+/* New center square vote */
+
+/* New square vote */
+</script>
 {% endblock %}

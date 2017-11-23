@@ -26,7 +26,7 @@ class Idea(models.Model):
 
 
     def save(self, *args, **kwargs):
-        super(SquareIdea, self).save(*args, **kwargs)
+        super(Idea, self).save(*args, **kwargs)
         self.votes.create(user=self.submitted_by)
 
 
