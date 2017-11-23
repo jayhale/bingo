@@ -14,6 +14,7 @@ INSTALLED_APPS = [
     'accounts',
     'utilities',
     'cards',
+    'ideas',
 
     # Background stuff
     'django.contrib.admin',
