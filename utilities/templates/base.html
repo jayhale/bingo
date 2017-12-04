@@ -30,6 +30,29 @@
             {% else %}
             <a class="navbar-item" href="{% url 'login' %}">Login</a>
             {% endif %}
+            {% if announcements %}
+            <div class="navbar-item dropdown is-hoverable is-right" id="navbar-alerts">
+              <div class="navbar-trigger">
+                <div class="tag" aria-haspopup="true" aria-controls="dropdown-alerts">
+                  {{ announcements.count }}
+                  alert{{ announcements.count|pluralize }}
+                </div>
+              </div>
+              <div class="dropdown-menu" id="dropdown-alerts">
+                <div class="dropdown-content">
+                  {% for announcement in announcements %}
+                  <div class="dropdown-item">
+                    <h4 class="title is-size-6">{{ announcement.title }}</h4>
+                    {{ announcement }}
+                  </div>
+                  {% if not forloop.last %}
+                  <hr class="dropdown-divider">
+                  {% endif %}
+                  {% endfor %}
+                </div>
+              </div>
+            </div>
+            {% endif %}
           </div>
         </div>
       </div>
